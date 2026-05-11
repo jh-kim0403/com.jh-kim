@@ -4,10 +4,22 @@ import portfolio from "../../assets/portfolio.png";
 import led_dimmer from "../../assets/LED_Dimmer.jpg";
 import pic3 from "../../assets/temp_profile.webp";
 import jlock from "../../assets/jlockbusters.png";
+import betYouCan from "../../assets/IMG_4664.PNG";
+import betYouCanGoals from "../../assets/IMG_4665.PNG";
+import betYouCanProof from "../../assets/IMG_4671.PNG";
 import "../Projects/Projects.css";
 import { FiArrowUpRight } from "react-icons/fi";
 
 const projects = [
+    {
+        title: "Bet You Can",
+        image: betYouCan,
+        images: [betYouCan, betYouCanGoals, betYouCanProof],
+        alt: "Bet You Can mobile app",
+        description: "AI Accountability app that allows users to bet on their goals and compete with other users for the same goal",
+        tags: ["Mobile App"],
+        actions: [{ label: "GitHub", href: "https://github.com/jh-kim0403/betyoucan" }],
+    },
     {
         title: "Jortfolio",
         image: portfolio,
@@ -68,7 +80,15 @@ function Projects() {
                     {projects.map(project => (
                         <article className="project-card glass-panel" key={project.title}>
                             <div className="project-image-wrap">
-                                <img src={project.image} alt={project.alt} />
+                                {project.images ? (
+                                    <div className="project-image-gallery">
+                                        {project.images.map((image, index) => (
+                                            <img src={image} alt={`${project.alt} screenshot ${index + 1}`} key={image} />
+                                        ))}
+                                    </div>
+                                ) : (
+                                    <img src={project.image} alt={project.alt} />
+                                )}
                             </div>
                             <div className="project-content">
                                 <h3>{project.title}</h3>

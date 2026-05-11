@@ -34,6 +34,25 @@
     transition: transform 240ms ease;
 }
 
+.project-image-wrap img.project-image-contain {
+    object-fit: contain;
+    padding: 12px;
+}
+
+.project-image-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+
+.project-image-wrap .project-image-gallery img {
+    object-fit: contain;
+    min-width: 0;
+}
+
 .project-card:hover .project-image-wrap img {
     transform: scale(1.04);
 }
