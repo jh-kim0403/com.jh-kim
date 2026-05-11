@@ -1,10 +1,3 @@
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Navigate
-} from "react-router-dom";
-
 import React, { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Preloader from "./components/Preloader";
@@ -18,6 +11,7 @@ import "./App.css";
 
 function App() {
   const [load, upadateLoad] = useState(true);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       upadateLoad(false);
@@ -25,24 +19,21 @@ function App() {
 
     return () => clearTimeout(timer);
   }, []);
-  return (
-    <Router>
 
+  return (
+    <>
       <Preloader load={load} />
       <div className="app-wrapper">
         <NavBar />
-        <div className="page-content">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/resume" element={<Resume />} />
-            <Route path="/projects" element={<Projects />} />
-          </Routes>
-        </div>
+        <main className="page-content">
+          <Home />
+          <About />
+          <Resume />
+          <Projects />
+        </main>
         <Footer />
       </div>
-    </Router>
-
+    </>
   );
 }
 

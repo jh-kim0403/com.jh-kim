@@ -1,68 +1,58 @@
-import React, { useState, useEffect } from 'react';
-import { Document, Page, pdfjs } from 'react-pdf';
-import { Container, Row, Button } from "react-bootstrap";
-import Particle from "../Particle";
+import React from 'react';
 import pdf from "../../assets/Jae_Kim_Software_Engineer_Resume.pdf";
 import { AiOutlineDownload } from "react-icons/ai";
-import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
-import 'react-pdf/dist/esm/Page/TextLayer.css';
+import { FiArrowUpRight } from "react-icons/fi";
+import './Resume.css';
 
-console.log(pdfjs.version);
-pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.8.69/pdf.worker.mjs`;
-
+const experienceItems = [
+    {
+        role: "Software Engineering Focus",
+        meta: "Web applications / automation / backend foundations",
+        details: "Building portfolio projects that combine practical user interfaces, clean application structure, and deployable product thinking.",
+    },
+    {
+        role: "Core Languages",
+        meta: "Java, Python, JavaScript",
+        details: "Comfortable implementing application logic, scripting workflow improvements, and connecting frontend experiences to useful data flows.",
+    },
+    {
+        role: "Product Direction",
+        meta: "Modern interfaces and applied machine learning",
+        details: "Interested in projects where engineering decisions directly improve usability, reliability, or decision-making.",
+    },
+];
 
 export default function ResumeNew() {
-
-    const [width, setWidth] = useState(1200);
-
-
-    const [numPages, setNumPages] = useState(null);
-    const [pageNumber, setPageNumber] = useState(1);
-
-    useEffect(() => {
-        setWidth(window.innerWidth);
-    }, []);
-    function onDocumentLoadSuccess({ numPages }) {
-        setNumPages(numPages);
-    }
-
     return (
-        <div style={{ paddingTop: "50px" }}>
-            <Particle id="particlesDark" color={true} />
-            <Container fluid className="resume-section">
+        <section id="experience" className="portfolio-section experience-section">
+            <div className="section-shell experience-layout">
+                <div>
+                    <p className="section-kicker">Experience</p>
+                    <h2 className="section-title">A practical engineering profile.</h2>
+                    <p className="section-copy">
+                        I am growing toward software engineering roles where I can contribute across frontend, backend, automation, and product execution.
+                    </p>
+                    <div className="experience-actions">
+                        <a className="portfolio-button primary" href={pdf} target="_blank" rel="noopener noreferrer">
+                            <AiOutlineDownload /> Download resume
+                        </a>
+                        <a className="portfolio-button" href="#projects">
+                            View work <FiArrowUpRight />
+                        </a>
+                    </div>
+                </div>
 
-                <Row style={{ justifyContent: "center", position: "relative" }}>
-                    <Button
-                        className="button-padding"
-                        variant="primary"
-                        href={pdf}
-                        target="_blank"
-                        style={{ maxWidth: "250px" , margin: "50px"}}
-                    >
-                        <AiOutlineDownload />
-                        &nbsp;Download CV
-                    </Button>
-                </Row>
-
-                <Row className="resume">
-                    <Document file={pdf} className="d-flex justify-content-center">
-                        <Page size="A4" pageNumber={1} scale={width > 786 ? 1.2 : 0.6} />
-                    </Document>
-                </Row>
-
-                <Row style={{ justifyContent: "center", position: "relative" }}>
-                    <Button
-                        variant="primary"
-                        href={pdf}
-                        target="_blank"
-                        style={{ maxWidth: "250px" , margin: "50px" }}
-                    >
-                        <AiOutlineDownload />
-                        &nbsp;Download CV
-                    </Button>
-                </Row>
-            </Container>
-        </div>
+                <div className="experience-list">
+                    {experienceItems.map(item => (
+                        <article className="experience-card glass-panel" key={item.role}>
+                            <span>{item.meta}</span>
+                            <h3>{item.role}</h3>
+                            <p>{item.details}</p>
+                        </article>
+                    ))}
+                </div>
+            </div>
+        </section>
     );
 
 }

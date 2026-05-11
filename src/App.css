@@ -1,39 +1,114 @@
-.App {
-  text-align: center;
+:root {
+  --page-bg: #070a12;
+  --surface: rgba(255, 255, 255, 0.055);
+  --surface-strong: rgba(255, 255, 255, 0.09);
+  --border: rgba(255, 255, 255, 0.12);
+  --text-main: #f7f9fc;
+  --text-muted: #aab4c3;
+  --accent: #4fd1c5;
+  --accent-strong: #7dd3fc;
+  --accent-soft: rgba(79, 209, 197, 0.14);
+  --max-width: 1160px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #ffffff;
+.app-wrapper {
   min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 10% 10%, rgba(79, 209, 197, 0.16), transparent 30%),
+    radial-gradient(circle at 90% 5%, rgba(125, 211, 252, 0.13), transparent 24%),
+    linear-gradient(180deg, #070a12 0%, #0c111d 42%, #070a12 100%);
+}
+
+.page-content {
+  flex: 1;
+}
+
+.portfolio-section {
+  position: relative;
+  min-height: 100vh;
+  padding: 112px 24px;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+}
+
+.section-shell {
+  width: min(100%, var(--max-width));
+  margin: 0 auto;
+}
+
+.section-kicker {
+  margin: 0 0 14px;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.section-title {
+  margin: 0;
+  color: var(--text-main);
+  font-size: clamp(2.4rem, 6vw, 5rem);
+  line-height: 1;
+  font-weight: 800;
+}
+
+.section-copy {
+  color: var(--text-muted);
+  font-size: 1.04rem;
+  line-height: 1.8;
+}
+
+.accent-text {
+  color: var(--accent);
+}
+
+.glass-panel {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(18px);
+  border-radius: 8px;
+}
+
+.portfolio-button {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 10px;
+  min-height: 46px;
+  padding: 0 18px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-main);
+  text-decoration: none;
+  font-weight: 800;
+  background: var(--surface);
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
 }
 
-.App-link {
-  color: #61dafb;
+.portfolio-button:hover,
+.portfolio-button:focus {
+  color: var(--text-main);
+  transform: translateY(-2px);
+  border-color: rgba(79, 209, 197, 0.5);
+  background: var(--accent-soft);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.portfolio-button.primary {
+  color: #051016;
+  border-color: transparent;
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+}
+
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 76px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .portfolio-section {
+    min-height: auto;
+    padding: 92px 18px;
   }
 }
-

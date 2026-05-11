@@ -5,12 +5,9 @@ import {
     AiFillInstagram,
     AiFillMail
 } from "react-icons/ai";
-import { CiMail } from "react-icons/ci";
 import './Footer.css';
 
 function Footer() {
-    let date = new Date();
-    let year = date.getFullYear();
     const mailButton = () => {
         window.location.href = "mailto:kjh9643@gmail.com?subject=Mail%20From%20Website";
     }

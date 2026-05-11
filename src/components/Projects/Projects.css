@@ -1,170 +1,86 @@
-.people-container {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
+.projects-section {
+    min-height: auto;
+}
+
+.projects-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+    gap: 36px;
+    align-items: end;
+    margin-bottom: 42px;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.project-card {
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
-.swiper {
-    position: relative;
-    z-index: 1;
-    width: 100vw;
-    max-width: 1200px;
-    overflow: visible;
+.project-image-wrap {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.05);
 }
 
-.swiper-slide {
-    position: relative;
-    width: 150px;
-    height: 200px;
-    border-radius: 12px;
-    overflow: visible;
-    transition: 1s;
-    user-select: none;
-    display: flex;
-    /* Add flexbox */
-    justify-content: center;
-    /* Center horizontally */
-    align-items: center;
-    /* Center vertically */
-}
-
-.swiper-slide > div:first-child{
-    font-size: xx-large;
-    color: aliceblue;
-    font-weight: bold;
-}
-
-@media (min-width: 768px) {
-    .swiper-slide {
-        width: 300px;
-        height: 400px;
-    }
-}
-
-.swiper-slide::after {
-    content: "";
-    position: absolute;
-    inset: 0;
+.project-image-wrap img {
     width: 100%;
     height: 100%;
-    mix-blend-mode: multiply;
-    z-index: 1;
-    background-color: rgba(185, 175, 158, 0.4);
-}
-
-.swiper-slide img {
-    width: 100%;
-    /* Adjust width to 100% */
-    height: 100%;
-    /* Ensure height is 100% */
     object-fit: cover;
-    /* Ensure the image covers the container */
-    transition: 1s;
+    transition: transform 240ms ease;
 }
 
-.swiper-slide p {
-    position: absolute;
-    left: 20px;
-    bottom: 10px;
-    color: #000000;
-    font-size: 5.3rem;
-    font-weight: 600;
-    font-style: italic;
-    letter-spacing: 2px;
-    z-index: 2;
-    opacity: 0;
-    transform: rotate(360deg) scale(0);
-    transition: 0.8s;
+.project-card:hover .project-image-wrap img {
+    transform: scale(1.04);
 }
 
-.swiper-slide-active {
-    position: relative;
-    width: 250px;
-    transition: 1s;
-    
+.project-content {
+    padding: 24px;
 }
 
-@media (min-width: 768px) {
-    .swiper-slide-active {
-        position: relative;
-        width: 450px;
-        transition: 1s;
-        
+.project-content h3 {
+    margin: 0;
+    color: var(--text-main);
+    font-size: 1.55rem;
+    font-weight: 900;
+}
+
+.project-content p {
+    margin: 14px 0 18px;
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 22px;
+}
+
+.project-tags span {
+    padding: 7px 10px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--accent);
+    font-size: 0.78rem;
+    font-weight: 900;
+    background: var(--accent-soft);
+}
+
+.project-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+@media (max-width: 991px) {
+    .projects-header,
+    .projects-grid {
+        grid-template-columns: 1fr;
     }
-}
-
-.swiper-slide-active > div:first-child {
-    position: relative;
-    transition: 1s;
-}
-
-
-.swiper-slide-active::after {
-    background: transparent;
-}
-
-.swiper-slide-active img {
-    transform: scale(1);
-    object-position: 10% 50%;
-}
-
-.swiper-slide-active p {
-    transform: rotate(0deg) scale(1);
-    opacity: 1;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    font-size: xx-large;
-    z-index: 2;
-}
-
-.swiper-slide-active a {
-    position: absolute;
-    transform: rotate(0deg) scale(1);
-    opacity: 1;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    font-size: xx-large;
-    z-index: 1000;
-}
-
-.swiper-pagination-bullet {
-    width: 16px;
-    height: 16px;
-    background-color: #a5a5a5;
-    border-radius: 50%;
-    transition: all 0.6s ease-in-out;
-}
-
-.swiper-pagination-bullet-active {
-    width: 32px;
-    background-color: #124d6f;
-    border-radius: 14px;
-}
-
-.button {
-    position: absolute;
-    bottom: 0;
-    margin-bottom: 30px;
-    z-index: 10000;
-}
-
-.button-down {
-    position: absolute;
-    bottom: 0;
-    margin-bottom: 10px;
-    z-index: 10000;
-}
-
-.button-up {
-    position: absolute;
-    bottom: 0;
-    margin-left: 20%;
-    margin-bottom: 10px;
-    z-index: 10000;
 }

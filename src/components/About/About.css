@@ -1,35 +1,32 @@
 .about-section {
-    position: relative;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .about-layout {
+    display: block;
+  }
+  
+.about-copy {
+    max-width: 840px;
+    margin: 0 auto;
+  }
+  
+.about-type {
+    min-height: 58px;
+    margin-top: 22px;
+    color: var(--accent);
+    font-size: clamp(1.4rem, 3vw, 2.25rem);
+    font-weight: 800;
 }
 
-.about-content {
-    padding: 9rem 0 2rem !important;
-    color: white;
+.about-copy .section-copy {
+    margin-top: 24px;
 }
 
-.about-paragraph {
-    padding-left: 50px;
-}
-
-.transparent-list {
-    margin-top: 30px;
-}
-
-.transparent-list .list-group-item {
-    background-color: transparent;
-    border: none;
-    color: white;
-}
-
-.cropped-img {
-    height: 450px;
-    width: auto;
-    margin-right: 10%;
-}
-
-.img-crop {
-    height: 400px;
-    overflow: hidden;
+@media (max-width: 991px) {
+    .about-layout {
+        display: block;
+    }
 }

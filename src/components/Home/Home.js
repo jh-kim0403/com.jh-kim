@@ -1,86 +1,82 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
 import Type from "./Type";
-import homeLogo from "../../assets/cartoon.png";
 import "./Home.css";
-import Particle from "../Particle";
 import { motion } from "framer-motion";
-import avatar from "../../assets/avatar.png";
+import { AiFillGithub, AiOutlineMail } from "react-icons/ai";
+import { FiArrowDownRight } from "react-icons/fi";
 
 function Home() {
     return (
-        <section>
-            <Container fluid className="home-section">
-                <Particle id="particlesTransparent" color={false} />
-                <Container className="home-content">
-                    <Row>
-                        <Col md="7" className="home-header">
-                            <h1 style={{ paddingBottom: 15 }} className="heading">
-                                Hi There!{" "}
-                                <span className="wave" role="img" aria-labelledby="wave">
-                                    👋🏻
-                                </span>
-                            </h1>
+        <section id="home" className="portfolio-section home-section">
+            <div className="section-shell hero-grid">
+                <motion.div
+                    className="hero-copy"
+                    initial={{ opacity: 0, y: 24 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                >
+                    <p className="section-kicker">Portfolio / Software Engineering</p>
+                    <h1 className="hero-title">
+                        Jae Kim builds{" "}
+                        <span className="hero-title-type">
+                            <Type strings={["Scalable", "User-Friendly", "Reliable", "Secure"]} />
+                        </span>
+                        <span className="hero-title-line">software.</span>
+                    </h1>
+                    <p className="hero-description">
+                        I build web apps, automation tools, and data-driven systems with clean interfaces and practical engineering.
+                    </p>
+                    <div className="hero-actions">
+                        <a className="portfolio-button primary" href="#projects">
+                            View projects <FiArrowDownRight />
+                        </a>
+                        <a className="portfolio-button" href="mailto:kjh9643@gmail.com?subject=Mail%20From%20Website">
+                            <AiOutlineMail /> Contact
+                        </a>
+                        <a className="portfolio-button icon-button" href="https://github.com/jh-kim0403" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+                            <AiFillGithub />
+                        </a>
+                    </div>
+                </motion.div>
 
-                            <h1 className="heading-name">
-                                I am
-                                <strong className="main-name"> Jae Kim</strong>
-                            </h1>
-                            <div className="home-type">
-                                <Type />
-                            </div>
-                        </Col>
-                        <Col md="5">
-                            <div className="img-crop">
-                                <img src={homeLogo} alt="home pic" className="cropped-img" />
-                            </div>
-                        </Col>
-                    </Row>
-                </Container>
-            </Container>
-            <Container fluid>
-                <Particle id="particlesDark" color={true} />
-                <Container>
-                    <Row>
+                <div className="hero-panel-stack">
+                    <motion.div
+                        className="hero-card glass-panel"
+                        initial={{ opacity: 0, y: 28 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
+                    >
+                        <div className="hero-card-topline">Available for software engineering roles</div>
+                        <div className="hero-metric">
+                            <span>Java</span>
+                            <span>Python</span>
+                            <span>React</span>
+                        </div>
+                        <p>
+                            Comfortable across backend logic, frontend interfaces, automation, and machine learning experimentation.
+                        </p>
+                        <div className="hero-status">
+                            <span className="status-dot"></span>
+                            Building polished, deployable products
+                        </div>
+                    </motion.div>
 
-                        <Col lg={4} className="myAvtar">
-                            <motion.img
-                                whileHover={{ scale: 1.3 }}
-                                whileTap={{ scale: 0.8 }}
-                                src={avatar} alt="Avatar"
-                                style={{width: 300,
-                                    height: 400,
-                                    justifyContent: "center" }}/>
-                        </Col>
-                        <Col  lg={8} className="home-about-description">
-                            <h1 style={{ fontSize: "2.6em" }}>
-                                LET ME <span> INTRODUCE </span> MYSELF
-                            </h1>
-                            <p className="home-about-body">
-                                I took interest in software when I took APCS in high school. 
-                                <br />
-                                <br />I am most comfortable with
-                                <i>
-                                    <b> Java and Python. </b>
-                                </i>
-                                <br />
-                                <br />
-                                I like to build &nbsp;
-                                <i>
-                                    <b>Web applications </b> and
-                                    am interested in {" "}
-                                    <b >
-                                        machine learning.
-                                    </b>
-                                </i>
-                                <br />
-                                <br />
-
-                            </p>
-                        </Col>
-                    </Row>
-                </Container>
-            </Container>
+                    <motion.div
+                        className="hero-card about-focus-card glass-panel"
+                        initial={{ opacity: 0, y: 28 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+                    >
+                        <span className="hero-card-topline">Current focus</span>
+                        <h3>Shipping stronger projects and growing as a software engineer.</h3>
+                        <div className="about-points">
+                            <span>Product-minded development</span>
+                            <span>Clean frontend systems</span>
+                            <span>Backend and automation workflows</span>
+                        </div>
+                    </motion.div>
+                </div>
+            </div>
         </section>
     );
 }

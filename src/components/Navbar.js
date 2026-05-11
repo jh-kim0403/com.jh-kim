@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
@@ -8,50 +8,94 @@ import { AiOutlineHome } from "react-icons/ai";
 import { IoPersonOutline } from "react-icons/io5";
 import { IoNewspaperOutline } from "react-icons/io5";
 import { MdOutlineEngineering } from "react-icons/md";
-import { Link } from "react-router-dom";
+
+const navItems = [
+    { id: "home", label: "Home", icon: <AiOutlineHome /> },
+    { id: "about", label: "About", icon: <IoPersonOutline /> },
+    { id: "experience", label: "Experience", icon: <IoNewspaperOutline /> },
+    { id: "projects", label: "Projects", icon: <MdOutlineEngineering /> },
+];
 
 function NavBar() {
     const [activeKey, setActiveKey] = useState("home");
     const [expand, updateExpanded] = useState(false);
     const [navState, updateNavbar] = useState(false);
 
-
-    function scrollHandler() {
-        if (window.scrollY >= 20) {
-            updateNavbar(true);
-        } else {
-            updateNavbar(false);
+    useEffect(() => {
+        function scrollHandler() {
+            updateNavbar(window.scrollY >= 20);
         }
-    }
 
-    window.addEventListener("scroll", scrollHandler);
+        scrollHandler();
+        window.addEventListener("scroll", scrollHandler);
+
+        return () => window.removeEventListener("scroll", scrollHandler);
+    }, []);
+
+    useEffect(() => {
+        if (!("IntersectionObserver" in window)) {
+            return undefined;
+        }
+
+        const sections = navItems
+            .map(item => document.getElementById(item.id))
+            .filter(Boolean);
+
+        const observer = new IntersectionObserver(
+            entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        setActiveKey(entry.target.id);
+                    }
+                });
+            },
+            {
+                rootMargin: "-35% 0px -55% 0px",
+                threshold: 0,
+            }
+        );
+
+        sections.forEach(section => observer.observe(section));
+
+        return () => observer.disconnect();
+    }, []);
+
+    function handleNavClick(id) {
+        setActiveKey(id);
+        updateExpanded(false);
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
 
     return (
 
-        <Navbar expand="lg" fixed="top" className={navState ? "sticky" : "blured"}>
+        <Navbar expanded={expand} expand="lg" fixed="top" className={navState ? "sticky" : "blured"}>
             <Container>
-                <Navbar.Brand href="/" className="brand">JK</Navbar.Brand>
-                <Navbar.Toggle aria-controls="responsive-navbar-nav">
+                <Navbar.Brand href="#home" className="brand" onClick={() => handleNavClick("home")}>JK</Navbar.Brand>
+                <Navbar.Toggle
+                    aria-controls="responsive-navbar-nav"
+                    onClick={() => updateExpanded(expand ? false : true)}
+                >
                     <span></span>
                     <span></span>
                     <span></span>
                 </Navbar.Toggle>
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="ms-auto pe-auto"
-                        activeKey={activeKey}
-                        onSelect={key => setActiveKey(key)}>
-                        <Nav.Item>
-                            <Nav.Link as={Link} to="/" eventKey="/"><AiOutlineHome />  <span>Home</span></Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                            <Nav.Link as={Link} to="/about" eventKey="/about"><IoPersonOutline />  <span>About</span></Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                            <Nav.Link as={Link} to="/resume" eventKey="/experience"><IoNewspaperOutline />  <span>Experience</span></Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                            <Nav.Link as={Link} to="/projects" eventKey="/projects"><MdOutlineEngineering />  <span>Projects</span></Nav.Link>
-                        </Nav.Item>
+                        activeKey={activeKey}>
+                        {navItems.map(item => (
+                            <Nav.Item key={item.id}>
+                                <Nav.Link
+                                    href={`#${item.id}`}
+                                    eventKey={item.id}
+                                    onClick={(event) => {
+                                        event.preventDefault();
+                                        handleNavClick(item.id);
+                                    }}
+                                >
+                                    {item.icon} <span>{item.label}</span>
+                                </Nav.Link>
+                            </Nav.Item>
+                        ))}
                     </Nav>
                 </Navbar.Collapse>
             </Container>

@@ -1,84 +1,156 @@
-/*shoko takahashi*/
-html {
-    --section-background-color: linear-gradient(to bottom left,
-            rgb(5, 7, 19),
-            rgba(5, 7, 19, 0.703));
-
-    --image-gradient: linear-gradient(
-            rgba(12, 21, 58),
-            rgba(20, 28, 65, 0.268));
-}
-
-.img-crop {
-    height: 400px;
-    overflow: hidden;
-}
-
-.cropped-img {
-    height: 450px;
-    width: auto;
-    margin-right: 10%;
-}
-
-.home-header {
-    z-index: 1;
-    padding-top: 80px !important;
-}
-
 .home-section {
-    position: relative;
-    z-index: -1;
-    background-image: var(--image-gradient), url(../../assets/moon.avif);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    padding-bottom: 30px !important;
-    padding-top: 30px !important;
+    padding-top: 132px;
 }
 
-.home-content {
-    padding: 9rem 0 2rem !important;
-    color: rgb(255, 255, 255);
-    text-align: left;
+.hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.75fr);
+    gap: 56px;
+    align-items: center;
 }
 
-.heading {
-    font-size: 2.4em !important;
-    padding-left: 50px !important;
+.hero-copy {
+    max-width: 780px;
 }
 
-.heading-name {
-    font-size: 2.5em !important;
-    padding-left: 50px !important;
+.hero-title {
+    margin: 0;
+    color: var(--text-main);
+    font-size: clamp(3rem, 6.2vw, 5.8rem);
+    line-height: 1;
+    font-weight: 900;
+    max-width: 760px;
 }
 
-.main-name {
-    color: #62c9e2;
+.hero-title-type {
+    display: inline-block;
+    color: var(--accent);
 }
 
-.home-type {
-    padding: 50px;
-    text-align: left;
-    font-size: 2.4em;
-    font-weight: 500;
-    color: #62c9e2;
+.hero-title-type .Typewriter {
+    display: inline;
 }
 
-.home-about-description {
-    color: white !important;
-    padding-top: 100px !important;
-    padding-bottom: 20px !important;
-    text-align: center;
+.hero-title-type .Typewriter__wrapper,
+.hero-title-type .Typewriter__cursor {
+    color: var(--accent);
 }
 
-.home-about-body {
-    padding-top: 50px;
-    font-size: 1.2em !important;
-    text-align: left;
+.hero-title-line {
+    display: block;
 }
 
-.myAvtar {
-    justify-content: center !important;
-    padding-top: 9em !important;
-    
-  }
+.hero-description {
+    max-width: 680px;
+    margin: 26px 0 0;
+    color: var(--text-muted);
+    font-size: 1.12rem;
+    line-height: 1.8;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 34px;
+}
+
+.icon-button {
+    width: 46px;
+    padding: 0;
+    font-size: 1.25rem;
+}
+
+.hero-panel-stack {
+    display: grid;
+    gap: 18px;
+}
+
+.hero-card {
+    padding: 28px;
+}
+
+.hero-card-topline {
+    color: var(--accent);
+    font-size: 0.82rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+.hero-metric {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 28px 0;
+}
+
+.hero-metric span {
+    display: grid;
+    place-items: center;
+    min-height: 86px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-main);
+    font-weight: 900;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.hero-card p {
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+.hero-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 24px;
+    color: var(--text-main);
+    font-weight: 800;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 22px var(--accent);
+}
+
+.about-focus-card h3 {
+    margin: 18px 0 24px;
+    color: var(--text-main);
+    font-size: 1.45rem;
+    line-height: 1.25;
+    font-weight: 900;
+}
+
+.about-points {
+    display: grid;
+    gap: 12px;
+}
+
+.about-points span {
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+@media (max-width: 991px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-card {
+        padding: 20px;
+    }
+
+    .hero-metric {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,19 +1,22 @@
 import React from "react";
 import Typewriter from "typewriter-effect";
 
-function Type() {
+const defaultStrings = [
+  "Software Engineer",
+  "Programmer",
+  "Future Entrepreneur",
+  "Web Enthusiast",
+];
+
+function Type({ strings = defaultStrings, delay = 55, deleteSpeed = 35 }) {
   return (
     <Typewriter
       options={{
-        strings: [
-          "Software Engineer",
-          "Programmer",
-          "Future Entrepreneur",
-          "Web Enthusiast",
-        ],
+        strings,
         autoStart: true,
         loop: true,
-        deleteSpeed: 50,
+        delay,
+        deleteSpeed,
       }}
     />
   );

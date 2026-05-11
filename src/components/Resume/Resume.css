@@ -1,5 +1,53 @@
-.resume-section {
-    position: relative ;
-    background-image: var(--section-background-color); 
-    color: white; 
+.experience-section {
+    min-height: auto;
+}
+
+.experience-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(320px, 1fr);
+    gap: 48px;
+    align-items: start;
+}
+
+.experience-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.experience-list {
+    display: grid;
+    gap: 18px;
+}
+
+.experience-card {
+    padding: 24px;
+}
+
+.experience-card span {
+    color: var(--accent);
+    font-size: 0.78rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+.experience-card h3 {
+    margin: 14px 0 10px;
+    color: var(--text-main);
+    font-size: 1.35rem;
+    font-weight: 900;
+}
+
+.experience-card p {
+    margin: 0;
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+@media (max-width: 991px) {
+    .experience-layout {
+        grid-template-columns: 1fr;
+    }
 }

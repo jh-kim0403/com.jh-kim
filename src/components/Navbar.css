@@ -1,51 +1,59 @@
 .brand{
-  color:antiquewhite;
+  color: var(--text-main) !important;
+  font-weight: 900;
+  letter-spacing: 0.08em;
 }
 
 .navbar-brand:hover,
 .navbar-brand:focus
  {
-  color: rgb(230, 137, 16) !important;
-  border: 1px solid rgba(255, 250, 243, 1);
-  border-radius: 10px;
+  color: var(--accent) !important;
 }
 
 .navbar {
   left: 0; right: 0;
   position: fixed;
   transition: all 0.3s ease-out 0s !important;
-  padding: 0.3rem 2rem !important;
-  font-size: 1.2rem !important;
+  padding: 0.75rem 2rem !important;
+  font-size: 0.96rem !important;
 }
 
 .navbar-nav .nav-item {
   position: relative;
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
 .navbar-nav .nav-item a {
-  font-weight: 400;
+  font-weight: 800;
   transition: all 0.3s ease-out 0s;
   position: relative;
   z-index: 1;
-  color: antiquewhite;
+  color: var(--text-muted) !important;
+  border-radius: 8px;
+  padding: 0.55rem 0.8rem !important;
+}
+
+.navbar-nav .nav-item a:hover,
+.navbar-nav .nav-item a:focus {
+  color: var(--text-main) !important;
+  background: var(--surface);
 }
 
 .navbar-nav .nav-item .nav-link::after {
   content: "";
-  position: relative;
-  display: block;
+  position: absolute;
+  display: inline-block;
   height: 2px;
-  width: 0;
+  width: 0%;
   border-radius: 16px;
-  background: rgb(230, 137, 16);
-  bottom: 1px;
-  left: 0;
+  background: var(--accent);
+  bottom: 4px;
+  left: 12px;
   z-index: -1;
   transition: all 0.3s ease-out 0s;
 }
 
-.navbar-nav .nav-item .a:hover::after {
+.navbar-nav .nav-item .nav-link:hover::after {
   width: 100%;
 }
 .navbar-nav .nav-item .nav-link.active::after {
@@ -53,7 +61,8 @@
 }
 
 .navbar-nav .nav-item .nav-link.active {
-  color: rgb(230, 137, 16);
+  color: var(--accent) !important;
+  background: var(--accent-soft);
 }
 
 .navbar-toggler {
@@ -64,7 +73,7 @@
 
 .navbar-toggler span {
   display: block !important;
-  background-color: rgb(230, 137, 16) !important;
+  background-color: var(--accent) !important;
   height: 2px !important;
   width: 27px !important;
   margin-top: 5px !important;
@@ -108,13 +117,33 @@
 }
 
 .sticky{
-  background-color: transparent;
+  background-color: rgba(7, 10, 18, 0.72);
   backdrop-filter: blur(10px) !important;
-  box-shadow: 0px 10px 10px 0px rgba(29, 32, 70, 0.371) !important;
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.22) !important;
   transition: all 0.3s ease-out 0s !important;
 }
 
 .blured{
-  background-color: rgba(9, 11, 24, 1);
-  box-shadow: 0px 10px 10px 0px rgba(210, 211, 221, 0.071);
+  background-color: rgba(7, 10, 18, 0.9);
+  border-bottom: 1px solid transparent;
+  box-shadow: none;
+}
+
+@media (max-width: 991px) {
+  .navbar {
+    padding: 0.7rem 1rem !important;
+  }
+
+  .navbar-collapse {
+    margin-top: 12px;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: rgba(7, 10, 18, 0.96);
+  }
+
+  .navbar-nav .nav-item {
+    margin-left: 0;
+  }
 }

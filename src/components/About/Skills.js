@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import './Skills.css';
 import {
-    DiJavascript1,
     DiReact,
-    DiNodejs,
     DiPython,
     DiGit,
     DiJava,
@@ -12,12 +10,15 @@ import {
 import {
     SiSpringboot,
     SiUipath,
-    SiApachemaven,
     SiDocker,
     SiNumpy,
-    SiScikitlearn 
+    SiScikitlearn,
+    SiFastapi,
+    SiTypescript,
+    SiExpo,
+    SiApacheairflow
 } from "react-icons/si";
-import { CgCPlusPlus } from "react-icons/cg";
+import { FaAws } from "react-icons/fa";
 import { PiFileSql } from "react-icons/pi";
 import { Container, Row, Col } from "react-bootstrap";
 
@@ -26,17 +27,18 @@ const initialSkills = [
     { id: 'React', icon: <DiReact size={64} /> },
     { id: 'Python', icon: <DiPython size={64} /> },
     { id: 'Java', icon: <DiJava size={64} /> },
-    { id: 'Nodejs', icon: <DiNodejs size={64} /> },
-    { id: 'Javascript', icon: <DiJavascript1 size={64} /> },
-    { id: 'C++', icon: <CgCPlusPlus size={64} /> },
+    { id: 'FastAPI', icon: <SiFastapi size={64} /> },
+    { id: 'TypeScript', icon: <SiTypescript size={64} /> },
+    { id: 'AWS', icon: <FaAws size={64} /> },
     { id: 'SpringBoot', icon: <SiSpringboot size={64} /> },
     { id: 'Git', icon: <DiGit size={64} /> },
-    { id: 'Maven', icon: <SiApachemaven  size={64} /> },
+    { id: 'Expo', icon: <SiExpo size={64} /> },
     { id: 'Docker', icon: <SiDocker  size={64} /> },
     { id: 'Numpy', icon: <SiNumpy   size={64} /> },
     { id: 'ScikitLearn', icon: <SiScikitlearn   size={64} /> },     
     { id: 'SQL', icon: <PiFileSql   size={64} /> },
-    { id: 'UIPath', icon: <SiUipath  size={64} /> }
+    { id: 'UIPath', icon: <SiUipath  size={64} /> },
+    { id: 'Apache Airflow', icon: <SiApacheairflow size={64} /> }
 ];
 
 // Utility to shuffle an array
@@ -69,7 +71,7 @@ export default function Skills() {
                 <Row className="g-3 skills-list">
                     {skills.map(skill => (
                         /* 6 cols on xs (2 per row), 3 cols on md+ (4 per row) */
-                        <Col key={skill.id} xs={5} md={2}>
+                        <Col key={skill.id} xs={6} sm={4} md={3} lg={2}>
                             <motion.div
                                 layout
                                 className="skill-item"
