@@ -1,5 +1,5 @@
 import React from 'react';
-import pdf from "../../assets/Jae_Kim_Software_Engineer_Resume.pdf";
+import pdf from "../../assets/Jae H Kim - Software Engineer Resume.pdf";
 import { AiOutlineDownload } from "react-icons/ai";
 import { FiArrowUpRight } from "react-icons/fi";
 import './Resume.css';
