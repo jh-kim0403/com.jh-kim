@@ -2,7 +2,7 @@ import React from "react";
 import Type from "./Type";
 import "./Home.css";
 import { motion } from "framer-motion";
-import { AiFillGithub, AiOutlineMail } from "react-icons/ai";
+import { AiFillGithub, AiFillLinkedin, AiOutlineMail } from "react-icons/ai";
 import { FiArrowDownRight } from "react-icons/fi";
 
 function Home() {
@@ -33,8 +33,11 @@ function Home() {
                         <a className="portfolio-button" href="mailto:kjh9643@gmail.com?subject=Mail%20From%20Website">
                             <AiOutlineMail /> Contact
                         </a>
-                        <a className="portfolio-button icon-button" href="https://github.com/jh-kim0403" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
-                            <AiFillGithub />
+                        <a className="portfolio-button icon-button hero-social-button" href="https://github.com/jh-kim0403" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+                            <AiFillGithub size={32} />
+                        </a>
+                        <a className="portfolio-button icon-button hero-social-button" href="https://www.linkedin.com/in/jhkim051208/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+                            <AiFillLinkedin size={32} />
                         </a>
                     </div>
                 </motion.div>

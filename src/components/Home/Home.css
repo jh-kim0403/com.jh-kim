@@ -58,7 +58,13 @@
 .icon-button {
     width: 46px;
     padding: 0;
-    font-size: 1.25rem;
+    font-size: 2rem;
+}
+
+.hero-actions .hero-social-button svg {
+    width: 30px !important;
+    height: 30px !important;
+    min-width: 30px;
 }
 
 .hero-panel-stack {

@@ -2,7 +2,7 @@ import React from "react";
 import lcd from "../../assets/lcd_calculator.png";
 import portfolio from "../../assets/portfolio.png";
 import led_dimmer from "../../assets/LED_Dimmer.jpg";
-import pic3 from "../../assets/temp_profile.webp";
+import githubLogo from "../../assets/github-logo.png";
 import jlock from "../../assets/jlockbusters.png";
 import betYouCan from "../../assets/IMG_4664.PNG";
 import betYouCanGoals from "../../assets/IMG_4665.PNG";
@@ -26,7 +26,7 @@ const projects = [
         alt: "Jortfolio project",
         description: "Personal portfolio project for presenting work, background, and engineering direction.",
         tags: ["React", "Portfolio", "Frontend"],
-        actions: [{ label: "Demo", href: "https://www.jaeh-kim.com/" }],
+        actions: [{ label: "GitHub", href: "https://github.com/jh-kim0403/com.jh-kim" }],
     },
     {
         title: "Jlockbusters",
@@ -54,7 +54,7 @@ const projects = [
     },
     {
         title: "Search Engine",
-        image: pic3,
+        image: githubLogo,
         alt: "Search Engine project",
         description: "Search-focused project direction exploring indexing, retrieval, and useful data access.",
         tags: ["Search", "Python", "Data"],
